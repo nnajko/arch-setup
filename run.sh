@@ -27,4 +27,7 @@ install_packages "${DEV_TOOLS[@]}"
 echo "Installing fonts"
 install_packages "${FONTS[@]}"
 
-echo "Install complete."
+echo "Applying zsh"
+apply_zsh
+
+echo "Setup complete."

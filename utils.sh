@@ -84,3 +84,19 @@ install_packages() {
 		yay -S --noconfirm "${to_install[@]}"
 	fi
 }
+
+apply_zsh() {
+	local ZSH_DIR=$(command -v /usr/bin/zsh)
+	if [[ -z ${ZSH_DIR} ]]; then
+		echo "zsh not installed. Skipping."
+	else
+		local USER=$(echo $USER)
+		local DEFAULT_SHELL=$(getent passwd ${USER} | awk -F: '{print $NF}')
+		if [[ ${ZSH_DIR} = ${DEFAULT_SHELL} ]]; then
+			echo "zsh already applied. Skipping."
+		else
+			chsh -s ${ZSH_DIR}
+			echo "zsh applied. Logout to see effect."
+		fi
+	fi
+}
