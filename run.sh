@@ -30,4 +30,8 @@ install_packages "${FONTS[@]}"
 echo "Applying zsh"
 apply_zsh
 
+echo "Applying git config defaults"
+git config --global credential.credentialStore gpg
+git config --global credential.guiPrompt false
+
 echo "Setup complete."
